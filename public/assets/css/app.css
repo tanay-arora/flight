@@ -2069,12 +2069,11 @@ Elements
 #preloader .loader .earth-wrapper .earth {
   width: 160px;
   height: 160px;
-  background: url("https://zupimages.net/up/19/34/6vlb.gif");
+  background: url("../media/licon.png");
   border-radius: 100%;
-  background-size: 340px;
-  animation: earthAnim 12s infinite linear;
+  background-size: 160px;
   margin: 0 auto;
-  border: 1px solid #CDD1D3;
+  background-color: #4D73FC;
 }
 @media (max-width: 575px) {
   #preloader .loader .earth-wrapper .earth {
@@ -4417,9 +4416,10 @@ footer .social-link ul li:hover {
 }
 
 .travel-sec {
-  background: url("../media/backgrounds/inner-banner-1.png");
+  background: url("https://pk.visamiddleeast.com/content/dam/VCOM/regional/cemea/generic-cemea/travel-with-visa/images/deserted-beach-travel-1920x720.jpg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   padding: 114px 0 58px;
   position: relative;
 }

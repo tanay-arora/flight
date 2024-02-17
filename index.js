@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const path = require('path');
 const airports = require('./airports.json');
+const fs = require('fs');
 
 const apiUrl = "https://api.duffel.com/air";
 const headers = {
@@ -37,13 +38,33 @@ app.get('/api', (req, res) => {
   res.send('Api working!');
 });
 
+app.post('/submit-form', (req, res) => {
+  const formData = req.body;
+  console.log('Received form data:', formData);
+  const csvData = Object.values(formData).join(',') + '\n';
+
+  const filePath = 'form_data.csv';
+
+  fs.appendFile(filePath, csvData, (err) => {
+    if (err) {
+      console.error('Error saving form data:', err);
+      res.status(500).send('Error saving form data');
+    } else {
+      console.log('Form data saved successfully!');
+      res.send('Form data received and saved successfully!');
+    }
+  });
+});
+
 app.get('/airports', async (req, res) => {
   try {
     const query = req.query.q;
     const results = airports.filter(airport => {
       return airport?.name?.toLowerCase()?.includes(query.toLowerCase()) || 
-       airport?.city_name?.toLowerCase()?.includes(query.toLowerCase()) || 
-       airport?.iata_code?.toLowerCase()?.includes(query.toLowerCase());
+       airport?.city?.toLowerCase()?.includes(query.toLowerCase()) ||
+       airport?.country?.toLowerCase()?.includes(query.toLowerCase()) || 
+       airport?.state?.toLowerCase()?.includes(query.toLowerCase()) || 
+       airport?.code?.toLowerCase()?.includes(query.toLowerCase());
   });
     res.send(results);  
   } catch (error) {

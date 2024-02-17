@@ -253,6 +253,7 @@
         })
         $('.radio-button').on('click',function(){
           var $this = $(this).val();
+          if($this == "") $this = "economy"
           $('.pasenger-class').text($this);
         })
       }
@@ -293,10 +294,7 @@
 
           $('.total-pasenger').text(total)
         })
-        $('.radio-button').on('click',function(){
-          var $this = $(this).val();
-          $('.pasenger-class').text($this);
-        })
+       
       }
 
     },
@@ -467,26 +465,57 @@
     },
 
     availableTags: function(){
+     
       $('#flightFrom').on('input', function() {
         const _query = this.value??"";
-        if(_query.length>1){
-          var availableTags = []
+        if(_query.length>0){
         var serverUrl = window.location.origin;
         axios.get(serverUrl+'/airports?q='+_query)
         .then(response => {
             console.log(response);
-            response?.data?.map((v)=>{
-              availableTags.push(`${v.iata_code} ${v.name} ${v.city_name}`)
-            })
-            $( ".auto-input" ).autocomplete({
-              source: availableTags
-            });
+            const airports = response.data;
+            const airportListItems = airports.map(v => `
+                <li class="airport-item" data-name="${v.code}, ${v.name}, ${v.city}, ${v.country}" style="position: relative;margin-bottom:9px">
+                    <span style="display: block;width: calc(100% - 60px);">
+                        <strong style="font-size: 18px;">${v.city}, ${v.country}</strong><br>
+                        <span style="font-size: 14px;">${v.name}</span>
+                    </span>
+                    <span style="font-size: 18px;color: #484848;font-weight: 600;position: absolute;right: 0;top: calc(50% - 12px);">${v.code}</span>
+                </li>
+            `);
+            $(".airport_select_from").empty().append(airportListItems.join(''));
+            if(airportListItems?.length>0) $(".airport_select_from").show(); 
+            else  $(".airport_select_from").hide(); 
+            $(".airport-item").on('click', function() {
+              const airportName = $(this).data('name');
+              $('#flightFrom').val(airportName); 
+              $(".airport_select_from").hide(); 
+          });
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
         }
     });
+    $(document.body).on('click', function(e) {
+      if (!$(e.target).closest('.airport_select_to').length && !$(e.target).is('#flightTo')) {
+          $(".airport_select_to").hide();
+      }
+  });
+  $(document).ready(function() {
+    const formattedDate = new Date().toLocaleDateString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    $('#flightDep').val(formattedDate);
+});
+  $(document.body).on('click', function(e) {
+    if (!$(e.target).closest('.airport_select_from').length && !$(e.target).is('#flightFrom')) {
+        $(".airport_select_from").hide();
+    }
+});
     $('#flightTo').on('input', function() {
       const _query = this.value??"";
       if(_query.length>1){
@@ -495,12 +524,24 @@
       axios.get(serverUrl+'/airports?q='+_query)
       .then(response => {
           console.log(response);
-          response?.data?.map((v)=>{
-            availableTags.push(`${v.iata_code} ${v.name} ${v.city_name}`)
-          })
-          $( ".auto-input" ).autocomplete({
-            source: availableTags
-          });
+          const airports = response.data;
+          const airportListItems = airports.map(v => `
+              <li class="airport-item" data-name="${v.code}, ${v.name}, ${v.city}, ${v.country}" style="position: relative;margin-bottom:9px">
+                  <span style="display: block;width: calc(100% - 60px);">
+                      <strong style="font-size: 18px;">${v.city}, ${v.country}</strong><br>
+                      <span style="font-size: 14px;">${v.name}</span>
+                  </span>
+                  <span style="font-size: 18px;color: #484848;font-weight: 600;position: absolute;right: 0;top: calc(50% - 12px);">${v.code}</span>
+              </li>
+          `);
+          $(".airport_select_to").empty().append(airportListItems.join(''));
+          if(airportListItems?.length>0) $(".airport_select_to").show(); 
+          else $(".airport_select_to").hide(); 
+          $(".airport-item").on('click', function() {
+            const airportName = $(this).data('name');
+            $('#flightTo').val(airportName); 
+            $(".airport_select_to").hide(); 
+        });
       })
       .catch(error => {
           console.error('Error fetching data:', error);
@@ -576,6 +617,8 @@
     },
     timepicker:function(){
       $(document).ready(function () {
+        $(".airport_select_to").hide(); 
+        $(".airport_select_from").hide(); 
         $('.timepicker').timepicker({
             timeFormat: 'h:mm p',
             interval: 60,

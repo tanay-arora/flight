@@ -9,23 +9,47 @@ jQuery(document).ready(function() {
 
 		$('.wizard').css('transform', 'scale(0)');
 	})
-	jQuery('.form-wizard-next-btn').click(function() {
+	jQuery('.form-wizard-next-btn').click(async function() {
 		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
 		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
 		var next = jQuery(this);
 		var nextWizardStep = true;
-		parentFieldset.find('.wizard-required').each(function(){
-			var thisValue = jQuery(this).val();
+		var formData = {};
 
-			if( thisValue == "") {
+		parentFieldset.find('.wizard-required').each(function() {
+			var thisValue = jQuery(this).val();
+			console.log(thisValue)
+
+			var fieldName = jQuery(this).attr('name');
+
+			if (thisValue == "") {
 				jQuery(this).siblings(".wizard-form-error").slideDown();
 				nextWizardStep = false;
-			}
-			else {
+			} else {
 				jQuery(this).siblings(".wizard-form-error").slideUp();
+				formData[fieldName] = thisValue;
 			}
 		});
+		console.log(formData)
 		if( nextWizardStep) {
+			
+			try {
+				const response = await axios.post('/submit-form', formData, {
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				});
+				
+				if (response.status === 200) {
+					console.log(response.data);
+				} else {
+					console.error('Server error:', response.status);
+				}
+			} catch (error) {
+				console.error('Axios error:', error);
+			}
+
+
 			next.parents('.wizard-fieldset').removeClass("show","400");
 			currentActiveStep.removeClass('active').addClass('activated').next().addClass('active',"400");
 			next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show","400");
