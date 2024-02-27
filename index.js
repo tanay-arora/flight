@@ -12,7 +12,7 @@ const headers = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
   'Duffel-Version': 'v1',
-  'Authorization': 'Bearer duffel_test_caUtCAADJqtJXJPF1nH8wz2lDqRFYu2QPg-eA729Hkb'
+  'Authorization': 'Bearer duffel_test_DxcWsq1ZkbhIcCWP2aiz_t4LtGR10PNRbzajrPTlvOa'
 };
 app.use(cors());
 app.use(express.json()); 
