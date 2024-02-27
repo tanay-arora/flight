@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking, Cancellation, and Schedule Change</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    a{
+        color: white !important;
+    }
+    .message {
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: #dfdfdf;
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    p {
+        color: #d0d0d0;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    .phone-number {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .call-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 30px;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+        outline: none;
+    }
+    .call-button:hover {
+        background-color: #0056b3;
+    }
+    @media screen and (max-width: 768px) {
+        h1 {
+            font-size: 32px;
+        }
+        p {
+            font-size: 16px;
+        }
+        .phone-number {
+            font-size: 24px;
+        }
+        .call-button {
+            padding: 12px 30px;
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container" style="background-image: url('./assets/media/bg5.jpg');">
+        <div class="message" style="background-color: #000000a8;padding:54px 74px;">
+            <img src="assets/media/logo.png" alt="Company Logo" style="width: 280px; margin-bottom: 20px;">
+            <h1>Booking, Cancellation, and Schedule Change</h1>
+            <p>If you need to book, cancel, or change your schedule, please contact us:</p>
+            <p class="phone-number" style="margin-bottom: 23px;">Call us at: <a href="tel:+18337415247">+1 (833) 7415247</a></p>
+            <button style="padding: 13px 64px;" onclick="location.href='tel:+18337415247'" class="call-button">Call Now</button>
+        </div>
+    </div>
+</body>
+</html>

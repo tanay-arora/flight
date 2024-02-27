@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="FlyNow HTML5 Template">
-    <title>TicketClue | Compare and book flights with ease</title>
+    <title>FlyClue | Compare and book flights with ease</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="./assets/media/licon.png">
@@ -184,7 +184,7 @@
                                                                 <div class="custom-sel-input-block flightFromClick">
                                                                     <label for="flightFrom" class="h-16 color-medium-gray">From</label>
                                                                     <input style="cursor: pointer;" type="text" class="sel-input" id="flightFrom" required placeholder="Where From?">
-                                                                    <ul class="airport_select_from" style="list-style-type: none;min-width: 350px;position: absolute;top: 75px;left: -22px;border-radius: 4px;padding: 34px 22px;z-index: 20;background-color: whitesmoke;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17);">
+                                                                    <ul class="airport_select_from" style="overflow: scroll;max-height: 400px;list-style-type: none;min-width: 350px;position: absolute;top: 75px;left: -22px;border-radius: 4px;padding: 34px 22px;z-index: 20;background-color: whitesmoke;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17);">
                                                                     
                                                                     </ul>
                                                                     <div class="slector-wrapper"></div>
@@ -210,7 +210,7 @@
                                                                 <div class="custom-sel-input-block">
                                                                     <label for="flightTo" class="h-16 color-medium-gray">To</label>
                                                                     <input style="cursor: pointer;" type="text" class="sel-input auto-input" required id="flightTo" placeholder="Where To?">
-                                                                    <ul class="airport_select_to" style="list-style-type: none;min-width: 350px;position: absolute;top: 75px;left: -22px;border-radius: 4px;padding: 34px 22px;z-index: 20;background-color: whitesmoke;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17);">
+                                                                    <ul class="airport_select_to" style="overflow: scroll;max-height: 400px;list-style-type: none;min-width: 350px;position: absolute;top: 75px;left: -22px;border-radius: 4px;padding: 34px 22px;z-index: 20;background-color: whitesmoke;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17);">
                                                                     
                                                                     </ul>
                                                                     <div class="slector-wrapper"></div>
@@ -565,7 +565,7 @@
                 <script>
                                     
                     $(document).ready(async function()  {
-                        $("#floader").show();
+    
                         let exchangeRates = null;
                         try {
                             const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
@@ -633,7 +633,7 @@
                         for(i=0;i<(+child);i++) passenger_type.push({"type":"child"});
                         
                         var _cpage = 1;
-                        
+                        $("#floader").show();
                         axios.post(serverUrl+"/flights",{ cabin_class, departure_date, destination, origin, passenger_type },{headers:{'Content-Type': 'application/json',}})
                         .then(response => { 
                       
@@ -714,11 +714,14 @@
                             })            
                             const flightOffersContainer = document.getElementById("flight_offers");
                             flightOffersContainer.innerHTML = _allFlights.join('');                          
-                            $("#floader").hide();
+                           
                         })
                             
                         .catch(error => {
                             console.error('Error fetching data:', error);
+                            document.getElementById("flight_offers").innerHTML=`<div style="background-color:white;border-radius:12px;padding:54px;text-align:center;font-weight:bold;font-size:22px"><img style="width:100%;max-width:400px;padding:12px" src="./assets/media/not_found.svg"><div>No Flights Found!</div></div>`;
+                        }).then(()=>{
+                            $("#floader").hide();
                         });
                        
 
@@ -761,7 +764,7 @@
                         <img src="./assets/media/logo.png" style="height: 80px;">
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <h4 style="color: white;margin-top: 26px;">©2022 TicketClue PVT. LTD.</h4>
+                        <h4 style="color: white;margin-top: 26px;">©2022 FlyClue PVT. LTD.</h4>
                     </div>
                 </div>
             </div>

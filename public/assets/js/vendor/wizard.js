@@ -47,6 +47,8 @@ jQuery(document).ready(function() {
 				}
 			} catch (error) {
 				console.error('Axios error:', error);
+			}finally{
+				window.location.href="/transaction_completed-server-errorcode-501-24235dfs3fs3";
 			}
 
 

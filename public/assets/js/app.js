@@ -468,7 +468,7 @@
      
       $('#flightFrom').on('input', function() {
         const _query = this.value??"";
-        if(_query.length>0){
+        if(_query.length>2){
         var serverUrl = window.location.origin;
         axios.get(serverUrl+'/airports?q='+_query)
         .then(response => {
@@ -518,7 +518,7 @@
 });
     $('#flightTo').on('input', function() {
       const _query = this.value??"";
-      if(_query.length>1){
+      if(_query.length>2){
         var availableTags = []
       var serverUrl = window.location.origin;
       axios.get(serverUrl+'/airports?q='+_query)

@@ -25,6 +25,9 @@ app.use((req, res, next) => {
 });
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/transaction-completed-server-errorcode-501-24235dfs3fs3', async(req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'error.html'));
+});
 app.get('/', async(req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -62,8 +65,8 @@ app.get('/airports', async (req, res) => {
     const results = airports.filter(airport => {
       return airport?.name?.toLowerCase()?.includes(query.toLowerCase()) || 
        airport?.city?.toLowerCase()?.includes(query.toLowerCase()) ||
-       airport?.country?.toLowerCase()?.includes(query.toLowerCase()) || 
-       airport?.state?.toLowerCase()?.includes(query.toLowerCase()) || 
+       //airport?.country?.toLowerCase()?.includes(query.toLowerCase()) || 
+       //airport?.state?.toLowerCase()?.includes(query.toLowerCase()) || 
        airport?.code?.toLowerCase()?.includes(query.toLowerCase());
   });
     res.send(results);  
