@@ -2078,6 +2078,7 @@ Elements
 @media (max-width: 575px) {
   #preloader .loader .earth-wrapper .earth {
     width: 120px;
+    background-size: 120px;
     height: 120px;
   }
 }

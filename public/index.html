@@ -233,7 +233,7 @@
                                                             <div class="custom-sel-input-block flightFromClick">
                                                                 <label for="flightFrom" class="h-16 color-medium-gray">From</label>
                                                                 <input style="cursor: pointer;" type="text" class="sel-input" id="flightFrom" required placeholder="Where From?">
-                                                                <ul class="airport_select_from" style="overflow: scroll;max-height: 400px;list-style-type: none;min-width: 350px;position: absolute;top: 75px;left: -22px;border-radius: 4px;padding: 34px 22px;z-index: 20;background-color: whitesmoke;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17);">
+                                                                <ul class="airport_select_from" style="overflow-y: auto;overflow-x: hidden;max-height: 400px;list-style-type: none;width: 350px;position: absolute;top: 75px;left: -22px;border-radius: 4px;padding: 34px 22px;z-index: 20;background-color: whitesmoke;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17);">
                                                                 
                                                                 </ul>
                                                                 <div class="slector-wrapper"></div>
@@ -259,7 +259,7 @@
                                                             <div class="custom-sel-input-block">
                                                                 <label for="flightTo" class="h-16 color-medium-gray">To</label>
                                                                 <input style="cursor: pointer;" type="text" class="sel-input auto-input" required id="flightTo" placeholder="Where To?">
-                                                                <ul class="airport_select_to" style="overflow: scroll;max-height: 400px;list-style-type: none;min-width: 350px;position: absolute;top: 75px;left: -22px;border-radius: 4px;padding: 34px 22px;z-index: 20;background-color: whitesmoke;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17);">
+                                                                <ul class="airport_select_to" style="overflow-y: auto;overflow-x: hidden;max-height: 400px;list-style-type: none;width: 350px;position: absolute;top: 75px;left: -22px;border-radius: 4px;padding: 34px 22px;z-index: 20;background-color: whitesmoke;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17);">
                                                                 
                                                                 </ul>
                                                                 <div class="slector-wrapper"></div>
@@ -1104,6 +1104,15 @@
         background-color: #0056b3;
     }
     @media screen and (max-width: 768px) {
+        .arrows{
+            display: none;
+        }
+        .airport_select_from{
+            max-width: 100%;
+        }
+        .airport_select_to{
+            max-width: 100%;
+        }
         .custom-heading {
             font-size: 32px;
         }
