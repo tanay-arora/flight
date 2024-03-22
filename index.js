@@ -31,6 +31,15 @@ app.get('/transaction-completed-server-errorcode-501-24235dfs3fs3', async(req, r
 app.get('/', async(req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+app.get('/about', async(req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('/services', async(req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('/contactus', async(req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 app.get('/search_flights', async(req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'flight-listing.html'));
 });
