@@ -56,6 +56,100 @@
                                     <img style="height: 86px;" src="assets/media/logo.png" alt="FlyNow">
                                 </a>
                             </div>
+                            <style>
+                                @media screen and (min-width:1000px) {
+                                    .header-right-sec{
+                                        right: 12px;
+                                    background-color: white;
+                                    padding: 14px 36px;
+                                    border-radius: 4px;
+                                    position: absolute;
+                                    }
+                                    .header-right-sec .utility__phone-number-image {
+                                        position: absolute;
+                                        top: 16px;
+                                    }
+                                }
+                                @media screen and (max-width:1000px) {
+                                    .main-menu__left{
+                                        gap: 0 !important;
+                                    }
+                                    .header-right-sec .utility__phone-number-image {
+                                        position: absolute;
+                                        top: 4px;
+                                    }
+                                    .mob-hide{
+                                        display: none !important;
+                                    }
+                                    .header-right-sec{
+                                        right: 0;
+                                    background-color: white;
+                                    padding: 14px 18px;
+                                    border-radius: 4px;
+                                    position: absolute;
+                                    font-size: 13px;
+                                }
+                                }
+                                .header-right-sec-2 .utility__phone-number-image {
+                                        position: absolute;
+                                      
+                                        top: 50%;
+                                        margin-top: -20px;
+                                }
+                                @media screen and (min-width:700px) {
+                                    .header-right-sec-2{
+                                        margin-left: calc(50% - 350px) !important;
+                                    }
+                                }
+                                    .header-right-sec-2{
+                                        max-width: 700px;
+                                        margin: 0 auto;
+                                        position: relative;
+                                        z-index: 99999;
+                                    border-radius: 3px;
+                                    margin: 10px;
+                                    background-color: white;
+                                    padding: 14px 18px;
+                                    border-radius: 4px;
+                                    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.17);
+                                    }
+                                 
+
+                                .slick-prev, .slick-next{
+                                    z-index: 2 !important;
+                                }
+                                .header-right-sec-2 .utility__phone-number{
+                                    font-size: 15px;
+                                }
+                                .header-right-sec-2 .travel__expert{
+                                    font-size: 12px;
+                                    margin-right: 40px;
+                                }
+                                .header-right-sec:hover, .header-right-sec-2:hover{
+                                    background-color: rgb(229, 243, 255) !important;
+                                }
+                                .showbtn:hover{
+                                    color: white !important;
+                                    background-color: #1438b8;
+                                }
+                                .telephone-mob{
+                                    background-color: #4D73FC;
+                                    color: white;
+                                    padding: 5px;
+                                    position: absolute;
+                                    right: 14px;
+                                    top: 50%;
+                                    margin-top: -15px;
+                                    border-radius: 40px;
+                                }
+                            </style>
+                            <a href="tel:+1-833-741-5247" style="display: block;" class="header-right-sec">
+                                    <img class="utility__phone-number-image" width="42" height="42" alt="Speak to a travel expert" src="https://c.fareportal.com/gcms/portals/2/rweb/images/COA-agent-pic.png?v=1">
+                                    <span style="margin-left: 56px;color: black;" class="utility__phone-msg" id="utility__phone-msg">
+                                        <b id="utility__phone-number" >+1-833-741-5247</b>
+                                    <span class="d-block travel__expert mob-hide" >Speak to a travel expert</span>
+                                </span>
+                            </a>
 
                             <!-- <div class="main-menu__nav">
                                 <ul class="main-menu__list">
@@ -611,7 +705,7 @@
             </div>
 
             <!-- Benefits Start -->
-            <section style="margin-top: -120px;z-index: 10;" class="benefit p-40"  data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out" >
+            <section style="margin-top: -120px;z-index: 10;overflow: hidden;" class="benefit p-40"  data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out" >
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-4 col-lg-6 col-md-6 mb-xl-0 mb-24">
@@ -651,9 +745,9 @@
                 </div>
             </section>
             <!-- Benefits End -->
-
+            
             <!-- Flight Card Slider Start -->
-            <section class="flight-card p-40 mb-40"  data-sal="slide-down" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out" >
+            <section style="overflow: hidden;" class="flight-card p-40 mb-40"  data-sal="slide-down" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out" >
                 <div class="container-fluid">
                     <h3 class="lightest-black h-36 bold mb-40">Latest Flight Deals</h3>
                     <div class="flight-card-slider">
@@ -1131,26 +1225,41 @@
 <script>
     $(document).ready(function (){
         $("#custom_mobile_container").hide();
-        if (window.matchMedia("(max-width: 500px)").matches) {
-    
         setTimeout(() => {
             $("#custom_mobile_container").show();
-        }, 5000);
-    
-    }
+        }, 3500);
+        if (window.matchMedia("(max-width: 500px)").matches) {
+
+        }
     $("#close_custom_mobile_container").click( function (){
             $("#custom_mobile_container").hide();
         })
     })
 </script>
 
-<div class="custom-container" id="custom_mobile_container" style="position: fixed;top: 0;z-index: 12;background-image: url('./assets/media/bg5.jpg');">
-    <div class="custom-message" style="background-color: #000000a8;padding:54px 34px;text-align: left;position: relative;">
+<div  id="custom_mobile_container" style="position: fixed;bottom: 0;z-index: 12;width: 100%;">
+    <!-- <div class="custom-message" style="background-color: #000000a8;padding:54px 34px;text-align: left;position: relative;">
         <div id="close_custom_mobile_container" style="color: white;position: fixed;right: 18px;margin-top: -40px;font-size: 20px;">X</div>
         <img src="assets/media/logo.png" alt="Company Logo" style="width: 280px; margin-bottom: 20px;">
         <h1 class="custom-heading">Booking, Cancellation, and Schedule Change</h1>
         <p class="custom-paragraph">If you need to book, cancel, or change your schedule, please contact us:</p>
         <p class="custom-phone-number" style="margin-bottom: 23px;color: whitesmoke;">Call us at: <a href="tel:+18337415247" style="text-decoration: underline;" class="custom-link">+1 (833) 7415247</a></p>
         <button style="padding: 13px 64px;" onclick="location.href='tel:+18337415247'" class="custom-button">Call Now</button>
-    </div>
+    </div> -->
+
+      <!-- <div id="close_custom_mobile_container" style="color: white;position: fixed;right: 18px;margin-top: -40px;font-size: 20px;">X</div> -->
+       
+
+     <div >
+        <a href="tel:+1-833-741-5247" style="display: block;" class="header-right-sec-2">
+                <img class="utility__phone-number-image" width="42" height="42" alt="Speak to a travel expert" src="https://c.fareportal.com/gcms/portals/2/rweb/images/COA-agent-pic.png?v=1">
+                <span style="margin-left: 56px;color: black;" class="utility__phone-msg" id="utility__phone-msg">
+                    <b id="utility__phone-number" >Looking for last minute deals?</b>
+                <span class="d-block travel__expert" >Speak to a travel expert and get assistance 24/7</span>
+                <span class="telephone-mob"><img src="./assets/media/icons/call.svg"></span>
+            </span>
+        </a>
+
+     </div>
+    
 </div>
